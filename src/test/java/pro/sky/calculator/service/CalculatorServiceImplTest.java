@@ -24,24 +24,40 @@ class CalculatorServiceImplTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"1,2,3", "5,10,15", "-10,15,5", "0,0,0", "0,-1,0"})
+    @CsvSource(value = {"1,2,3", "5,10,15", "-10,15,5", "0,0,0", "0,-1,-1"})
     void plusPasitive(Integer a, Integer b, Integer expected) {
         assertEquals(expected, calculatorService.plus(a, b));
     }
 
     @Test
     void minus() {
+        int expected = 15;
+        assertEquals(expected, calculatorService.plus(5, 10));
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"3,2,1", "15,10,5", "-10,15,-25", "0,0,0", "0,-1,1"})
+    void minusPositive(Integer a, Integer b, Integer expected) {
+        assertEquals(expected, calculatorService.minus(a, b));
     }
 
     @Test
     void multiply() {
+        int expected = 15;
+        assertEquals(expected, calculatorService.multiply(5, 3));
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"1,2,3", "5,10,15", "-10,15,5", "0,0,0", "0,0,0"})
+    void multiplyPositive(Integer a, Integer b, Integer expected) {
+        assertEquals(expected, calculatorService.plus(a, b));
     }
 
     @Test
     void dividePositive() {
         double expected = 10;
-        calculatorService.plus(null, null);
-        assertEquals(expected, calculatorService.divide(5, 5));
+        calculatorService.divide(50, 5);
+        assertEquals(expected, calculatorService.divide(50, 5));
     }
 
     @Test
